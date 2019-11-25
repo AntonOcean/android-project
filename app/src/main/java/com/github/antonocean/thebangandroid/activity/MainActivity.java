@@ -2,12 +2,13 @@ package com.github.antonocean.thebangandroid.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
@@ -18,7 +19,7 @@ import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
     private final static String search_term = "";
-    @Bind(R.id.tapBarMenu) TapBarMenu tapBarMenu;
+    @BindView(R.id.tapBarMenu) TapBarMenu tapBarMenu;
 
 
     @Override
