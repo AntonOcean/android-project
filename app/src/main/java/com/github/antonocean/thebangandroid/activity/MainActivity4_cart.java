@@ -1,7 +1,11 @@
 package com.github.antonocean.thebangandroid.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +14,18 @@ import android.widget.TextView;
 
 import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.binding.ProductsAdapter;
+import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class MainActivity4_cart extends AppCompatActivity {
@@ -45,10 +57,29 @@ public class MainActivity4_cart extends AppCompatActivity {
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+//        DatabaseHandler db = new DatabaseHandler(this);
+//        List<Product> products = db.getAllProducts();
+/*
+        TODO: products = getFromdB
+*/
 
         recyclerView.setAdapter(new ProductsAdapter(products, R.layout.list_item_cart, getApplicationContext()));
 
-
+//        for (Product product: products) {
+//            InputStream is = null;
+//            try {
+//                is = (InputStream) new URL(product.getThumbnailImageUrl()).getContent();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                break;
+//            }
+//            Bitmap d = BitmapFactory.decodeStream(is);
+//            try {
+//                is.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
 
 
@@ -66,6 +97,32 @@ public class MainActivity4_cart extends AppCompatActivity {
         String price2 = price.substring(1,price.length());
         total += Double.parseDouble(price2);
 
+        InputStream is = null;
+        try {
+            is = (InputStream) new URL(p.getThumbnailImageUrl()).getContent();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap binaryImage = BitmapFactory.decodeStream(is);
+        try {
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String path = Environment.getExternalStorageDirectory().toString();
+        File file = new File(path, UUID.randomUUID().toString() +".jpg");
+        try{
+            OutputStream stream = null;
+            stream = new FileOutputStream(file);
+            binaryImage.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            stream.flush();
+            stream.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        Uri savedImageURI = Uri.parse(file.getAbsolutePath());
+        p.setThumbnailImageUrl(savedImageURI.toString());
 
 
     }

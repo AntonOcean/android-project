@@ -1,5 +1,7 @@
 package com.github.antonocean.thebangandroid.model;
 
+import android.graphics.Bitmap;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -21,13 +23,22 @@ public class Product implements Serializable {
     @SerializedName("thumbnailImageUrl")
     private String thumbnailImageUrl;
 
+    private Bitmap image = null;
 
 
-    public Product(String styleId, String price, String originalPrice, String productUrl, String colorId, String productName, String brandName, String thumbnailImageUrl, String percentOff, String productId) {
+    public Product(String price, String productName, String brandName, String thumbnailImageUrl) {
         this.price = price;
         this.productName = productName;
         this.brandName = brandName;
         this.thumbnailImageUrl = thumbnailImageUrl;
+    }
+
+    public Product(String price, String productName, String brandName, String thumbnailImageUrl, Bitmap image) {
+        this.price = price;
+        this.productName = productName;
+        this.brandName = brandName;
+        this.thumbnailImageUrl = thumbnailImageUrl;
+        this.image = image;
     }
 
 

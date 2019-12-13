@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.github.antonocean.thebangandroid.BR;
 import com.github.antonocean.thebangandroid.R;
@@ -35,7 +38,10 @@ public class MainActivity3_detail extends AppCompatActivity {
 
         binding.setVariable(BR.product,item);
 
+        ImageView img = (ImageView) findViewById(R.id.imageView);
+        img.setImageURI(Uri.parse(item.getThumbnailImageUrl()));
 
+        binding.setVariable(R.id.imageView, img);
 
         //add to cart button
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,7 +61,6 @@ public class MainActivity3_detail extends AppCompatActivity {
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
 

@@ -5,16 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.github.antonocean.thebangandroid.BR;
 import com.github.antonocean.thebangandroid.activity.MainActivity3_detail;
 import com.github.antonocean.thebangandroid.model.Product;
 
+import java.net.URI;
 import java.util.List;
 
 //        import android.widget.ImageView;
@@ -90,13 +94,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Bindin
     @Override
     public void onBindViewHolder(BindingHolder holder, final int position) {
 
+        ImageView img =  (ImageView) ((LinearLayout) holder.itemView).getChildAt(0);
+
         Product p = productList.get(position);
         holder.getBinding().setVariable(BR.product, p);
         holder.getBinding().executePendingBindings();
 
-
-
-
+        img.setImageURI(Uri.parse(p.getThumbnailImageUrl()));
     }
 
 

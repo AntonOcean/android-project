@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
 import com.github.antonocean.thebangandroid.Retrofit.ApiInterface;
+import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 import com.github.antonocean.thebangandroid.model.ProductsResponse;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         //butterknife binding
         ButterKnife.bind(this);
-
     }
 
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "search: click");
 
         SearchView searchView = (SearchView) findViewById(R.id.search_field);
-        String q= (String) searchView.getQuery().toString();
+        String q = (String) searchView.getQuery().toString();
 
         //send query by intern to Activity2
         Intent intent = new Intent(this, MainActivity2_search.class);
