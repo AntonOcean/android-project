@@ -7,5 +7,5 @@ import java.util.List;
 public interface IDatabaseHandler {
     public void addProduct(Product contact);
     public List<Product> getAllProducts();
-    public void deleteProduct(Product contact);
+    public void deleteAllProducts();
 }

@@ -1,7 +1,9 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.media.Image;
@@ -16,15 +18,21 @@ import android.widget.ImageView;
 
 import com.github.antonocean.thebangandroid.BR;
 import com.github.antonocean.thebangandroid.R;
+import com.github.antonocean.thebangandroid.databinding.ActivityMain3Binding;
+import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity3_detail extends AppCompatActivity {
+
+    static private DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        db = new DatabaseHandler(getApplicationContext());
 
         //get intent info
         Intent intent = getIntent();
@@ -36,25 +44,23 @@ public class MainActivity3_detail extends AppCompatActivity {
         //bind data to product page
         ViewDataBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main3);
 
+//        ImageView img = ((ActivityMain3Binding) binding).imageView;
+//        img.setImageURI(Uri.parse(item.getThumbnailImageUrl()));
+
         binding.setVariable(BR.product,item);
 
-        ImageView img = (ImageView) findViewById(R.id.imageView);
-        img.setImageURI(Uri.parse(item.getThumbnailImageUrl()));
-
-        binding.setVariable(R.id.imageView, img);
-
+//
+//        binding.setVariable(R.id.imageView, img);
+        final Context context = getApplicationContext();
         //add to cart button
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, item.getProductName()+" added to your Cart!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
                 fab.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), R.drawable.ic_ok));
                 fab.setBackgroundTintList (ColorStateList.valueOf(0xFF4CAF50));
                 //add product to cart
-                MainActivity4_cart.add(item);
+                MainActivity4_cart.add(item, db, context);
 
             }
         });

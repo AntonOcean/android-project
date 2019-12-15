@@ -1,7 +1,9 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
     private final static String search_term = "";
+//    static private DatabaseHandler db;
     @Bind(R.id.tapBarMenu) TapBarMenu tapBarMenu;
 
 
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         ab.setLogo(R.drawable.zappos_logo_white);
 
+        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
+        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 1);
+
+//        db = new DatabaseHandler(this);
 
         //make whole search field clickable
         final SearchView searchView = (SearchView)findViewById(R.id.search_field);
@@ -61,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+
+    private void requestPermission(String permission, int requestCode) {
+        // запрашиваем разрешение
+        ActivityCompat.requestPermissions(this,
+                new String[]{permission}, requestCode);
+    }
 
 
     @OnClick(R.id.tapBarMenu) public void onMenuButtonClick() {

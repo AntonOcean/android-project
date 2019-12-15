@@ -23,8 +23,6 @@ public class Product implements Serializable {
     @SerializedName("thumbnailImageUrl")
     private String thumbnailImageUrl;
 
-    private Bitmap image = null;
-
 
     public Product(String price, String productName, String brandName, String thumbnailImageUrl) {
         this.price = price;
@@ -32,15 +30,6 @@ public class Product implements Serializable {
         this.brandName = brandName;
         this.thumbnailImageUrl = thumbnailImageUrl;
     }
-
-    public Product(String price, String productName, String brandName, String thumbnailImageUrl, Bitmap image) {
-        this.price = price;
-        this.productName = productName;
-        this.brandName = brandName;
-        this.thumbnailImageUrl = thumbnailImageUrl;
-        this.image = image;
-    }
-
 
     public String getPrice() {
         return price;
