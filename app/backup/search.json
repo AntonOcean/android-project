@@ -1,0 +1,129 @@
+{
+  "originalTerm": null,
+  "currentResultCount": "10",
+  "totalResultCount": "181379",
+  "term": "",
+  "results": [
+    {
+      "brandName": "Bardot",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/6/4/0/6/7/4640678-t-THUMBNAIL.jpg",
+      "productId": "9193314",
+      "originalPrice": "$119.00",
+      "styleId": "4640678",
+      "colorId": "3",
+      "price": "$119.00",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/9193314/color/3",
+      "productName": "Sasha Lace Dress"
+    },
+    {
+      "brandName": "Vans",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/8/8/9/0/6/4889067-t-THUMBNAIL.jpg",
+      "productId": "9312495",
+      "originalPrice": "$64.45",
+      "styleId": "4889067",
+      "colorId": "3",
+      "price": "$64.45",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/9312495/color/3",
+      "productName": "Kastle Attention Windbreaker"
+    },
+    {
+      "brandName": "Dansko",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/9/2/8/3/9/4928390-t-THUMBNAIL.jpg",
+      "productId": "122568",
+      "originalPrice": "$134.90",
+      "styleId": "4928390",
+      "colorId": "637898",
+      "price": "$134.90",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/122568/color/637898",
+      "productName": "Professional"
+    },
+    {
+      "brandName": "adidas Originals",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/9/1/4/8/5/4914856-t-THUMBNAIL.jpg",
+      "productId": "9056442",
+      "originalPrice": "$59.95",
+      "styleId": "4914856",
+      "colorId": "749222",
+      "price": "$59.95",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/9056442/color/749222",
+      "productName": "3-Stripes Pants"
+    },
+    {
+      "brandName": "adidas Originals",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/9/1/4/9/1/4914918-t-THUMBNAIL.jpg",
+      "productId": "9227646",
+      "originalPrice": "$69.95",
+      "styleId": "4914918",
+      "colorId": "749222",
+      "price": "$69.95",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/9227646/color/749222",
+      "productName": "Firebird Track Pants"
+    },
+    {
+      "brandName": "Flo Active",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/4/8/9/1/1/9/4891196-t-THUMBNAIL.jpg",
+      "productId": "9313525",
+      "originalPrice": "$29.99",
+      "styleId": "4891196",
+      "colorId": "839682",
+      "price": "$29.99",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/9313525/color/839682",
+      "productName": "Active Capri Leggings (Little Kids/Big Kids)"
+    },
+    {
+      "brandName": "Roxy Kids",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/5/0/1/4/8/8/5014887-t-THUMBNAIL.jpg",
+      "productId": "9366360",
+      "originalPrice": "$44.00",
+      "styleId": "5014887",
+      "colorId": "859174",
+      "price": "$30.99",
+      "percentOff": "29%",
+      "productUrl": "https://www.zappos.com/product/9366360/color/859174",
+      "productName": "Concha Blanca Top (Little Kids/Big Kids)"
+    },
+    {
+      "brandName": "Roxy Kids",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/5/0/1/4/8/9/5014899-t-THUMBNAIL.jpg",
+      "productId": "9366366",
+      "originalPrice": "$28.00",
+      "styleId": "5014899",
+      "colorId": "29514",
+      "price": "$25.85",
+      "percentOff": "7%",
+      "productUrl": "https://www.zappos.com/product/9366366/color/29514",
+      "productName": "Deep Water Long Sleeve T-Shirt (Little Kids/Big Kids)"
+    },
+    {
+      "brandName": "Appaman Kids",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/2/9/6/4/2/4/2964244-t-THUMBNAIL.jpg",
+      "productId": "8443170",
+      "originalPrice": "$53.00",
+      "styleId": "2964244",
+      "colorId": "401",
+      "price": "$53.00",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/8443170/color/401",
+      "productName": "The Standard Shirt (Toddler/Little Kids/Big Kids)"
+    },
+    {
+      "brandName": "Appaman Kids",
+      "thumbnailImageUrl": "https://www.zappos.com/images/z/2/9/6/4/5/5/2964550-t-THUMBNAIL.jpg",
+      "productId": "8230355",
+      "originalPrice": "$152.00",
+      "styleId": "2964550",
+      "colorId": "18914",
+      "price": "$152.00",
+      "percentOff": "0%",
+      "productUrl": "https://www.zappos.com/product/8230355/color/18914",
+      "productName": "Two Piece Lined Classic Mod Suit (Toddler/Little Kids/Big Kids)"
+    }
+  ],
+  "statusCode": "200"
+}

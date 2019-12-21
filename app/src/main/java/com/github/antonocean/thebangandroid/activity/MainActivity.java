@@ -1,7 +1,9 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
 import com.github.antonocean.thebangandroid.Retrofit.ApiInterface;
+import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 import com.github.antonocean.thebangandroid.model.ProductsResponse;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
     private final static String search_term = "";
+//    static private DatabaseHandler db;
     @Bind(R.id.tapBarMenu) TapBarMenu tapBarMenu;
 
 
@@ -45,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(true);
         ab.setLogo(R.drawable.zappos_logo_white);
 
+        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
+        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 1);
+
+//        db = new DatabaseHandler(this);
 
         //make whole search field clickable
         final SearchView searchView = (SearchView)findViewById(R.id.search_field);
@@ -58,9 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
         //butterknife binding
         ButterKnife.bind(this);
-
     }
 
+
+    private void requestPermission(String permission, int requestCode) {
+        // запрашиваем разрешение
+        ActivityCompat.requestPermissions(this,
+                new String[]{permission}, requestCode);
+    }
 
 
     @OnClick(R.id.tapBarMenu) public void onMenuButtonClick() {
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "search: click");
 
         SearchView searchView = (SearchView) findViewById(R.id.search_field);
-        String q= (String) searchView.getQuery().toString();
+        String q = (String) searchView.getQuery().toString();
 
         //send query by intern to Activity2
         Intent intent = new Intent(this, MainActivity2_search.class);

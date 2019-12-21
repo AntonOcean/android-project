@@ -13,6 +13,7 @@ import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
 import com.github.antonocean.thebangandroid.Retrofit.ApiInterface;
 import com.github.antonocean.thebangandroid.binding.ProductsAdapter;
+import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 import com.github.antonocean.thebangandroid.model.ProductsResponse;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
@@ -35,6 +36,7 @@ public class MainActivity2_search extends AppCompatActivity {
     @Bind(R.id.tapBarMenu)
     TapBarMenu tapBarMenu;
 
+    private DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
