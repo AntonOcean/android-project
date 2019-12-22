@@ -1,10 +1,13 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -27,26 +30,27 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 
 public class CartActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
 
-    static List<Product> products = new ArrayList<Product>();
+    static List<Product> products = new ArrayList<>();
 
     static double total = 0;
 
 
+    @SuppressLint("SetTextI18n")
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        Intent intent = getIntent();
-
         TextView cart_total = (TextView) findViewById(R.id.cart_total);
 
+        assert cart_total != null;
         cart_total.setText("Total: $"+total);
 
         //change action bar title to search term
@@ -56,14 +60,15 @@ public class CartActivity extends AppCompatActivity {
 
         //Display list of products
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         DatabaseHandler db = new DatabaseHandler(this);
         List<Product> products = db.getAllProducts();
 
-        recyclerView.setAdapter(new ProductsAdapter(products, R.layout.list_item_cart, getApplicationContext()));
+        recyclerView.setAdapter(new ProductsAdapter(products, R.layout.list_item_cart));
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -73,7 +78,7 @@ public class CartActivity extends AppCompatActivity {
         String price = p.getPrice();
 
         //delete the $ sign in front
-        String price2 = price.substring(1,price.length());
+        String price2 = price.substring(1);
         total += Double.parseDouble(price2);
 
         InputStream is = null;
@@ -84,6 +89,7 @@ public class CartActivity extends AppCompatActivity {
         }
         Bitmap binaryImage = BitmapFactory.decodeStream(is);
         try {
+            assert is != null;
             is.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,7 +106,7 @@ public class CartActivity extends AppCompatActivity {
         String path = Environment.getExternalStorageDirectory().toString();
         File file = new File(path, UUID.randomUUID().toString() +".jpg");
         try{
-            OutputStream stream = null;
+            OutputStream stream;
             stream = new FileOutputStream(file);
             binaryImage.compress(Bitmap.CompressFormat.JPEG,100,stream);
             stream.flush();
@@ -130,14 +136,6 @@ public class CartActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
-
-    static public void remove(Product p){
-        products.remove(p);
-    }
-
-
-
-
 
 
 }

@@ -1,27 +1,17 @@
 package com.github.antonocean.thebangandroid.db;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Environment;
 
 
 import com.github.antonocean.thebangandroid.model.Product;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class DatabaseHandler extends SQLiteOpenHelper implements IDatabaseHandler {
 
@@ -73,11 +63,11 @@ public class DatabaseHandler extends SQLiteOpenHelper implements IDatabaseHandle
     }
 
     public List<Product> getAllProducts() {
-        List<Product> productList = new ArrayList<Product>();
+        List<Product> productList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_PRODUCTS;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             do {

@@ -1,6 +1,8 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,12 +15,12 @@ import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
 import com.github.antonocean.thebangandroid.Retrofit.ApiInterface;
 import com.github.antonocean.thebangandroid.binding.ProductsAdapter;
-import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 import com.github.antonocean.thebangandroid.model.ProductsResponse;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,12 +34,10 @@ public class SearchActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
-    private static String search_term = "";
     @Bind(R.id.tapBarMenu)
     TapBarMenu tapBarMenu;
 
-    private DatabaseHandler db;
-
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +60,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //Display list of products
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ApiInterface apiService =
@@ -71,12 +72,11 @@ public class SearchActivity extends AppCompatActivity {
         call.enqueue(new Callback<ProductsResponse>() {
             @Override
             public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
-                int statusCode = response.code();
                 List<Product> movies = response.body().getResults();
                 if (movies.size()==0){
                     Toast.makeText(getApplicationContext(),"Sorry, no result found!", Toast.LENGTH_SHORT).show();
                 }
-                recyclerView.setAdapter(new ProductsAdapter(movies, R.layout.list_item_search, getApplicationContext()));
+                recyclerView.setAdapter(new ProductsAdapter(movies, R.layout.list_item_search));
 
             }
 
@@ -89,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
 

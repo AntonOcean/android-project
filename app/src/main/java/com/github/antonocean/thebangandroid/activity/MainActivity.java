@@ -31,7 +31,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
-    private final static String search_term = "";
     @Bind(R.id.tapBarMenu) TapBarMenu tapBarMenu;
 
 
@@ -43,15 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
         //set actionbar zappos logo
         ActionBar ab = getSupportActionBar();
+        assert ab != null;
         ab.setDisplayUseLogoEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
         ab.setLogo(R.drawable.zappos_logo_white);
 
-        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
-        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 1);
+        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
         //make whole search field clickable
         final SearchView searchView = (SearchView)findViewById(R.id.search_field);
+        assert searchView != null;
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void requestPermission(String permission, int requestCode) {
+    private void requestPermission(String permission) {
         // запрашиваем разрешение
         ActivityCompat.requestPermissions(this,
-                new String[]{permission}, requestCode);
+                new String[]{permission}, 1);
     }
 
 
@@ -83,21 +84,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "search: click");
 
         SearchView searchView = (SearchView) findViewById(R.id.search_field);
-        String q = (String) searchView.getQuery().toString();
+        assert searchView != null;
+        String q = searchView.getQuery().toString();
 
         //send query by intern to Activity2
         Intent intent = new Intent(this, SearchActivity.class);
         intent.putExtra("search", q);
-        startActivity(intent);
-
-    }
-
-    //on click function for the Advertisement
-    public void searchAD(View view){
-        //send query by intern to Activity2
-        Intent intent = new Intent(this, SearchActivity.class);
-        intent.putExtra("search", "vionic");
-
         startActivity(intent);
 
     }
@@ -109,14 +101,14 @@ public class MainActivity extends AppCompatActivity {
                 ApiClient.getClient().create(ApiInterface.class);
 
         SearchView searchView = (SearchView) findViewById(R.id.search_field);
-        String q= (String) searchView.getQuery().toString();
+        assert searchView != null;
+        String q= searchView.getQuery().toString();
 
 
         Call<ProductsResponse> call = apiService.getSearch(q,API_KEY);
         call.enqueue(new Callback<ProductsResponse>() {
             @Override
             public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
-                int statusCode = response.code();
                 List<Product> movies = response.body().getResults();
 
                 if (movies.size()==0){

@@ -5,7 +5,7 @@ import com.github.antonocean.thebangandroid.model.Product;
 import java.util.List;
 
 public interface IDatabaseHandler {
-    public void addProduct(Product contact);
-    public List<Product> getAllProducts();
-    public void deleteAllProducts();
+    void addProduct(Product contact);
+    List<Product> getAllProducts();
+    void deleteAllProducts();
 }

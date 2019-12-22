@@ -1,10 +1,12 @@
 package com.github.antonocean.thebangandroid.activity;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -16,10 +18,13 @@ import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 
+import java.util.Objects;
+
 public class DetailActivity extends AppCompatActivity {
 
     static private DatabaseHandler db;
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class DetailActivity extends AppCompatActivity {
         final Context context = getApplicationContext();
         //add to cart button
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
 
