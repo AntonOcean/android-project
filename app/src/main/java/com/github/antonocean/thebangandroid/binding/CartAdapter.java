@@ -13,14 +13,11 @@ import android.widget.ImageView;
 
 import com.github.antonocean.thebangandroid.BR;
 import com.github.antonocean.thebangandroid.R;
-import com.github.antonocean.thebangandroid.activity.MainActivity4_cart;
+import com.github.antonocean.thebangandroid.activity.CartActivity;
 import com.github.antonocean.thebangandroid.model.Product;
 
 import java.util.List;
 
-//        import android.widget.ImageView;
-//        import android.widget.LinearLayout;
-//        import android.widget.TextView;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BindingHolder> {
 
@@ -50,7 +47,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BindingHolder>
                         @Override
                         public void onClick(View v) {
                             Log.i("cart", "onClick: click!!!delete!");
-                            MainActivity4_cart.remove(item);
+                            CartActivity.remove(item);
                         }
                     }
 

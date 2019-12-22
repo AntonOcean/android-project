@@ -5,29 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.github.antonocean.thebangandroid.BR;
-import com.github.antonocean.thebangandroid.R;
-import com.github.antonocean.thebangandroid.activity.MainActivity3_detail;
+import com.github.antonocean.thebangandroid.activity.DetailActivity;
 import com.github.antonocean.thebangandroid.model.Product;
 
-import java.io.File;
-import java.net.URI;
 import java.util.List;
-
-//        import android.widget.ImageView;
-//        import android.widget.LinearLayout;
-//        import android.widget.TextView;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.BindingHolder> {
 
@@ -54,7 +42,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Bindin
 
                     Log.d("Test","num="+ item.getBrandName());
                     //send query by intern to Activity2
-                    Intent intent = new Intent(v.getContext(), MainActivity3_detail.class);
+                    Intent intent = new Intent(v.getContext(), DetailActivity.class);
 
                     intent.putExtra("product", item);
                     v.getContext().startActivity(intent);

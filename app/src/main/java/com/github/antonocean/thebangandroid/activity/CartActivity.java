@@ -1,18 +1,12 @@
 package com.github.antonocean.thebangandroid.activity;
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,10 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static butterknife.ButterKnife.Finder.arrayOf;
 
-
-public class MainActivity4_cart extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     static List<Product> products = new ArrayList<Product>();
@@ -49,7 +41,7 @@ public class MainActivity4_cart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_cart);
 
         Intent intent = getIntent();
 
@@ -68,37 +60,14 @@ public class MainActivity4_cart extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
         List<Product> products = db.getAllProducts();
-/*
-        TODO: products = getFromdB
-*/
 
         recyclerView.setAdapter(new ProductsAdapter(products, R.layout.list_item_cart, getApplicationContext()));
-
-//        for (Product product: products) {
-//            InputStream is = null;
-//            try {
-//                is = (InputStream) new URL(product.getThumbnailImageUrl()).getContent();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                break;
-//            }
-//            Bitmap d = BitmapFactory.decodeStream(is);
-//            try {
-//                is.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
     static public void add(Product p, DatabaseHandler db, Context context){
-
-//        DatabaseHandler DBHelper = new DatabaseHandler(getApplicationContext());
 
         products.add(p);
         String price = p.getPrice();
@@ -119,7 +88,6 @@ public class MainActivity4_cart extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-//            e.printStackTrace();
             Toast toast = Toast.makeText(
                     context,
                     "Товар уже добавлен в корзину",

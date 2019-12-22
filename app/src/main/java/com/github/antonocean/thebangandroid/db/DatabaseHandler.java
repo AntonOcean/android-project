@@ -68,21 +68,6 @@ public class DatabaseHandler extends SQLiteOpenHelper implements IDatabaseHandle
         values.put(KEY_PRICE, product.getPrice());
         values.put(KEY_IMAGE_PATH, product.getThumbnailImageUrl());
 
-
-//        InputStream is = null;
-//        try {
-//            is = (InputStream) new URL(product.getThumbnailImageUrl()).getContent();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Bitmap binaryImage = BitmapFactory.decodeStream(is);
-//        try {
-//            is.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        values.put(KEY_IMAGE, binaryImage.toString());
-
         db.insert(TABLE_PRODUCTS, null, values);
         db.close();
     }
