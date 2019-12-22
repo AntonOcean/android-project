@@ -10,13 +10,10 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.net.URI;
 
-/**
- * Created by Tina on 2/8/2017.
- */
 
 public class CustomBindingAdaptor {
 
-    @BindingAdapter("bind:imageUrl")
+    @BindingAdapter({"imageUrl"})
     public  static void loadImage(ImageView imageView, String url)
     {
         if (URLUtil.isValidUrl(url)) {
