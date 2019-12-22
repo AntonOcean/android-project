@@ -28,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity2_search extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
@@ -41,7 +41,7 @@ public class MainActivity2_search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_search);
 
         Intent intent = getIntent();
 
@@ -103,13 +103,13 @@ public class MainActivity2_search extends AppCompatActivity {
     //3 button on clicks
     public void cart(View view){
         //send query by intern to Activity2
-        Intent intent = new Intent(this, MainActivity4_cart.class);
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
 
     }
 
     public void aboutMe(View view){
-        Intent intent = new Intent(this, MainActivity5_about_me.class);
+        Intent intent = new Intent(this, AboutMeActivity.class);
         startActivity(intent);
 
     }

@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import com.github.antonocean.thebangandroid.R;
 
 
-public class MainActivity5_about_me extends AppCompatActivity {
+public class AboutMeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_about_me);
         setTitle("About Me");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

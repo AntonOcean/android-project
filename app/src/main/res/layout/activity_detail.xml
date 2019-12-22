@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 <android.support.design.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.github.antonocean.thebangandroid.activity.MainActivity3_detail"
+    tools:context="com.github.antonocean.thebangandroid.activity.DetailActivity"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">

@@ -19,16 +19,16 @@ package="com.github.antonocean.thebangandroid">
         </intent-filter>
     </activity>
     <activity android:launchMode="singleTop"
-        android:name="com.github.antonocean.thebangandroid.activity.MainActivity2_search"
+        android:name="com.github.antonocean.thebangandroid.activity.SearchActivity"
         android:parentActivityName="com.github.antonocean.thebangandroid.activity.MainActivity" />
     <activity android:launchMode="singleTop"
-        android:name="com.github.antonocean.thebangandroid.activity.MainActivity3_detail"
+        android:name="com.github.antonocean.thebangandroid.activity.DetailActivity"
         android:label="@string/title_activity_main3"
-        android:parentActivityName="com.github.antonocean.thebangandroid.activity.MainActivity2_search" />
+        android:parentActivityName="com.github.antonocean.thebangandroid.activity.SearchActivity" />
     <activity android:launchMode="singleTop"
-        android:name="com.github.antonocean.thebangandroid.activity.MainActivity4_cart"
+        android:name="com.github.antonocean.thebangandroid.activity.CartActivity"
         android:parentActivityName="com.github.antonocean.thebangandroid.activity.MainActivity" />
-    <activity android:launchMode="singleTop" android:name="com.github.antonocean.thebangandroid.activity.MainActivity5_about_me"
+    <activity android:launchMode="singleTop" android:name="com.github.antonocean.thebangandroid.activity.AboutMeActivity"
         android:parentActivityName="com.github.antonocean.thebangandroid.activity.MainActivity" ></activity>
 </application>
 

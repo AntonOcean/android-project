@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.github.antonocean.thebangandroid.R;
 import com.github.antonocean.thebangandroid.Retrofit.ApiClient;
 import com.github.antonocean.thebangandroid.Retrofit.ApiInterface;
-import com.github.antonocean.thebangandroid.db.DatabaseHandler;
 import com.github.antonocean.thebangandroid.model.Product;
 import com.github.antonocean.thebangandroid.model.ProductsResponse;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
     private final static String search_term = "";
-//    static private DatabaseHandler db;
     @Bind(R.id.tapBarMenu) TapBarMenu tapBarMenu;
 
 
@@ -51,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
         requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 1);
-
-//        db = new DatabaseHandler(this);
 
         //make whole search field clickable
         final SearchView searchView = (SearchView)findViewById(R.id.search_field);
@@ -90,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         String q = (String) searchView.getQuery().toString();
 
         //send query by intern to Activity2
-        Intent intent = new Intent(this, MainActivity2_search.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         intent.putExtra("search", q);
         startActivity(intent);
 
@@ -99,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     //on click function for the Advertisement
     public void searchAD(View view){
         //send query by intern to Activity2
-        Intent intent = new Intent(this, MainActivity2_search.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         intent.putExtra("search", "vionic");
 
         startActivity(intent);
@@ -126,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 if (movies.size()==0){
                     Toast.makeText(getApplicationContext(),"Sorry, no result found!", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent intent = new Intent(getBaseContext(), MainActivity3_detail.class);
+                    Intent intent = new Intent(getBaseContext(), DetailActivity.class);
 
                     intent.putExtra("product", movies.get(0));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -152,13 +148,13 @@ public class MainActivity extends AppCompatActivity {
     //button on click for cart
     public void cart(View view){
         //send query by intern to Activity2
-        Intent intent = new Intent(this, MainActivity4_cart.class);
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
 
     }
 
     public void aboutMe(View view){
-        Intent intent = new Intent(this, MainActivity5_about_me.class);
+        Intent intent = new Intent(this, AboutMeActivity.class);
         startActivity(intent);
 
     }

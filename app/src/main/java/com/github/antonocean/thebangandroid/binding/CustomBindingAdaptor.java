@@ -24,7 +24,5 @@ public class CustomBindingAdaptor {
         } else {
             Picasso.with(imageView.getContext()).load(new File(url)).placeholder(R.mipmap.ic_launcher).into(imageView);
         }
-//        Picasso.with(imageView.getContext()).load(url).placeholder(R.mipmap.ic_launcher).into(imageView);
-//        Picasso.with(imageView.getContext()).load(new File(url)).placeholder(R.mipmap.ic_launcher).into(imageView);
     }
 }
