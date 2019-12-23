@@ -62,12 +62,20 @@ public class SearchActivity extends AppCompatActivity {
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//TODO
+//        1. firebase(realtime db - nosql), ключ - продукт
+//        как в телеге с ссылкой, парсим ссылку, достаем id пользователя
+//        ссылка поделиться корзиной, через ссылку и открытие в приложении корзины друга
+//        2. авторизация, со свои бекендом
+//        Либо 1, Либо 2
 
+//TODO
+//        апи интерфейс создается выше
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-
-
+//TODO
+//        Вынести как отдельный модуль(класс) работы с сетью
         Call<ProductsResponse> call = apiService.getSearch(search_term,API_KEY);
         call.enqueue(new Callback<ProductsResponse>() {
             @Override
@@ -76,6 +84,8 @@ public class SearchActivity extends AppCompatActivity {
                 if (movies.size()==0){
                     Toast.makeText(getApplicationContext(),"Sorry, no result found!", Toast.LENGTH_SHORT).show();
                 }
+//TODO
+//                адаптер создается во вне
                 recyclerView.setAdapter(new ProductsAdapter(movies, R.layout.list_item_search));
 
             }
