@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorBlack</item>
-        <item name="android:icon">@drawable/zappos_logo_blue</item>
         <item name="android:colorBackground">@color/colorWhite</item>
 
     </style>

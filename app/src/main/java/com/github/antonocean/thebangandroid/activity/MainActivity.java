@@ -43,10 +43,8 @@ public class MainActivity extends AppCompatActivity {
         //set actionbar zappos logo
         ActionBar ab = getSupportActionBar();
         assert ab != null;
-        ab.setDisplayUseLogoEnabled(true);
+        ab.setDisplayUseLogoEnabled(false);
         ab.setDisplayShowHomeEnabled(true);
-        ab.setLogo(R.drawable.zappos_logo_white);
-
         requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
