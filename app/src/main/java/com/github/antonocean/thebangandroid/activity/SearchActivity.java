@@ -32,7 +32,7 @@ import retrofit2.Response;
 
 public class SearchActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-
+    private static final ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
     private final static String API_KEY = "a73121520492f88dc3d33daf2103d7574f1a3166";
     @Bind(R.id.tapBarMenu)
     TapBarMenu tapBarMenu;
@@ -68,11 +68,6 @@ public class SearchActivity extends AppCompatActivity {
 //        ссылка поделиться корзиной, через ссылку и открытие в приложении корзины друга
 //        2. авторизация, со свои бекендом
 //        Либо 1, Либо 2
-
-//TODO
-//        апи интерфейс создается выше
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
 
 //TODO
 //        Вынести как отдельный модуль(класс) работы с сетью
