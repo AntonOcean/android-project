@@ -85,8 +85,7 @@ public class SearchActivity extends AppCompatActivity {
                 if (movies.size()==0){
                     Toast.makeText(getApplicationContext(),"Sorry, no result found!", Toast.LENGTH_SHORT).show();
                 }
-//TODO
-//                адаптер создается во вне
+
                 recyclerView.setAdapter(new ProductsAdapter(movies, R.layout.list_item_search));
 
             }
