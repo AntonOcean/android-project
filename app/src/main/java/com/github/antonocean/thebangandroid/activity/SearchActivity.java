@@ -59,18 +59,24 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //Display list of products
+        displayProductList(search_term);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        ButterKnife.bind(this);
+
+
+    }
+
+    @OnClick(R.id.tapBarMenu) public void onMenuButtonClick() {
+        tapBarMenu.toggle();
+        Log.i(TAG, "onMenuButtonClick: ");
+    }
+
+    public void displayProductList(String search_term){
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//TODO
-//        1. firebase(realtime db - nosql), ключ - продукт
-//        как в телеге с ссылкой, парсим ссылку, достаем id пользователя
-//        ссылка поделиться корзиной, через ссылку и открытие в приложении корзины друга
-//        2. авторизация, со свои бекендом
-//        Либо 1, Либо 2
 
-//TODO
-//        Вынести как отдельный модуль(класс) работы с сетью
         Call<ProductsResponse> call = apiService.getSearch(search_term,API_KEY);
         call.enqueue(new Callback<ProductsResponse>() {
             @Override
@@ -93,17 +99,8 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        ButterKnife.bind(this);
-
-
     }
 
-    @OnClick(R.id.tapBarMenu) public void onMenuButtonClick() {
-        tapBarMenu.toggle();
-        Log.i(TAG, "onMenuButtonClick: ");
-    }
 
     //3 button on clicks
     public void cart(View view){
